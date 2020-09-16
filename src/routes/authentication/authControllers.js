@@ -58,13 +58,15 @@ router.post('/signin', async (req, res) => {
           res.status(500).json({
             code: "auth/failed-authenticate",
             message: 'Ocurrió un problema al momento de iniciar el login, por favor vuelva a intentarlo',
-            accessToken: null
+            accessToken: null,
+            
           });
         }
         res.status(200).json({
           code: "auth/successful-authentication",
           message: 'Usuario logueado exitósamente',
-          accessToken: idToken
+          accessToken: idToken,
+          userProfile: user.providerData[0]
         })
       }
     });
