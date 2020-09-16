@@ -41,6 +41,15 @@ router.post('/signin', async (req, res) => {
 
     const { email, password } = req.body;
 
+    if(!email.trim() || !password.trim()){
+      res.status(500).json({
+        code: "auth/failed-authenticate",
+        message: 'Ocurrió un problema al momento de iniciar el login, por favor vuelva a intentarlo',
+        accessToken: null
+      });
+      return
+    }
+
     const auth = await firebase.auth().signInWithEmailAndPassword(email, password);
 
     if (!auth.user.uid) {
