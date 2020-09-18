@@ -4,7 +4,9 @@ import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 
 import indexRouter from './routes/index';
-import authControllersRouter from './routes/authentication/authControllers';
+import signUpRouter from './routes/authentication/signUp';
+
+
 
 const app = express();
 app.use((req, res, next) => {
@@ -22,6 +24,9 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '../public')));
 
 app.use('/', indexRouter);
-app.use('/auth', authControllersRouter);
+app.use('/auth', signUpRouter);
+
+
+
 
 export default app;
