@@ -1,6 +1,8 @@
 import express from 'express';
 const router = express.Router();
 import { admin } from '../../firebase-services/initializer/initializeApp';
+import database from '../../database/database';
+import ModelTest from '../../models/ModelTest';
 
 //Here are the routes to register a user, log in with a user and log out
 
@@ -34,6 +36,27 @@ router.post('/signup', async (req, res) => {
     res.status(500).send(error);
   }
 
+});
+
+router.post('/add', async (req, res) => {
+
+  try {
+
+    const { test } = req.body
+    const addTest = new ModelTest({
+      test: test
+    });
+
+    await addTest.save();
+
+    res.status(200).json({
+      add: true
+    })
+  }
+  catch (err) {
+    console.log(err)
+    res.status(500).send(err);
+  }
 });
 
 
