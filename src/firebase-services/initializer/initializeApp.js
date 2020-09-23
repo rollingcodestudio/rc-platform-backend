@@ -1,5 +1,4 @@
 import * as admin from 'firebase-admin';
-import * as firebase from 'firebase';
 import * as dotenv from 'dotenv'
 dotenv.config()
 
@@ -20,15 +19,5 @@ admin.initializeApp({
   databaseURL: process.env.DATABASEURL
 });
 
-firebase.initializeApp({
-    apiKey: process.env.APIKEY,
-    authDomain: process.env.AUTHDOMAIN,
-    databaseURL: process.env.DATABASEURL,
-    projectId: process.env.PROJECTID,
-    storageBucket: process.env.STORAGEBUCKET,
-    messagingSenderId: process.env.MESSAGINGSENDERID,
-    appId: process.env.APPID 
-})
 
-
-export { admin, firebase };
+export { admin };
