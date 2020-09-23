@@ -7,7 +7,6 @@ import indexRouter from './routes/index';
 import signUpRouter from './routes/authentication/signUp';
 
 
-
 const app = express();
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
