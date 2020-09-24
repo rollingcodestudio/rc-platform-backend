@@ -9,9 +9,9 @@ router.post('/createUserProfile', async (req, res) => {
 
   try {
 
-    const { firstName, lastName, email, profilePhoto, state } = req.body
+    const { uid, firstName, lastName, email, profilePhoto, state } = req.body
 
-    if (!firstName || !lastName || !email || !profilePhoto) {
+    if (!uid || !firstName || !lastName || !email || !profilePhoto) {
       res.status(404).json({
         errorCode: 'incomplete-data',
         message: 'All data is required'
@@ -19,6 +19,7 @@ router.post('/createUserProfile', async (req, res) => {
     }
 
     const createProfile = new CreateUserProfile({
+      uid, 
       firstName,
       lastName,
       email,

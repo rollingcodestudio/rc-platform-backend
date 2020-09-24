@@ -7,7 +7,11 @@ let validStatus = {
 };
 
 const createUserProfileSchema = new Schema({
-
+    
+    uid: {
+        type: String,
+        required: [true, 'This information is required']
+    },
     firstName: {
         type: String,
         required: [true, 'This information is required']
